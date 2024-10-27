@@ -44,10 +44,9 @@ def retrieve_mp3(numid, output_path):
     # Find the document by its ID
     document = collection.find_one({"numid": numid})
 
-    if document and 'data' in document:
-        # Write back the data into a mp3 file in given output path
-        with open(output_path, 'wb') as file:
-            file.write(document['data'])
+    print(output_path)
+    with open(output_path, 'wb') as file:
+        file.write(document['data'])
 
 
 lengthofsequence = random.randint(lowerrangeseq,upperrangeseq)
@@ -79,28 +78,28 @@ for x in range(lengthofsequence-1):
 for x in idofseq:
     document = collection.find_one({"numid": x})
     if document:
-        retrieve_mp3(x, f"./public/correctsounds/{document['sound']}{x}.mp3")
+        retrieve_mp3(x, f"../public/correctsounds/{document['sound']}{x}.mp3")
     else:
         print(f"Correct sound not found for numid: {x}")
 
 for x in wrongidseq1:
     document = collection.find_one({"numid": x})
     if document:
-        retrieve_mp3(x, f"./public/incorrectsounds1/{document['sound']}{x}.mp3")
+        retrieve_mp3(x, f"../public/incorrectsounds1/{document['sound']}{x}.mp3")
     else:
         print(f"Incorrect sound 1 not found for numid: {x}")
 
 for x in wrongidseq2:
     document = collection.find_one({"numid": x})
     if document:
-        retrieve_mp3(x, f"./public/incorrectsounds2/{document['sound']}{x}.mp3")
+        retrieve_mp3(x, f"../public/incorrectsounds2/{document['sound']}{x}.mp3")
     else:
         print(f"Incorrect sound 2 not found for numid: {x}")
 
 for x in wrongidseq3:
     document = collection.find_one({"numid": x})
     if document:
-        retrieve_mp3(x, f"./public/incorrectsounds3/{document['sound']}{x}.mp3")
+        retrieve_mp3(x, f"../public/incorrectsounds3/{document['sound']}{x}.mp3")
     else:
         print(f"Incorrect sound 3 not found for numid: {x}")
 
