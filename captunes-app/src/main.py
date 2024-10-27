@@ -68,50 +68,50 @@ amountofdata = collection.count_documents({})
 # print(f"The wrong 2 output is {wrongidseq2}")
 # print(f"The incorrect 3 output is {wrongidseq3}")
 
-# @app.route('/')
-# def home():
-#     idofseq = []
-#     wrongidseq1 = []
-#     wrongidseq2 = []
-#     wrongidseq3 = []
-#     for x in range(lengthofsequence-1):
-#         idofseq.append(random.randint(1,amountofdata))
-#         wrongidseq1.append(random.randint(1,amountofdata))
-#         wrongidseq2.append(random.randint(1,amountofdata))
-#         wrongidseq3.append(random.randint(1,amountofdata))
+@app.route('/')
+def home():
+    idofseq = []
+    wrongidseq1 = []
+    wrongidseq2 = []
+    wrongidseq3 = []
+    for x in range(lengthofsequence-1):
+        idofseq.append(random.randint(1,amountofdata))
+        wrongidseq1.append(random.randint(1,amountofdata))
+        wrongidseq2.append(random.randint(1,amountofdata))
+        wrongidseq3.append(random.randint(1,amountofdata))
 
-#     session['idofseq'] = idofseq
+    session['idofseq'] = idofseq
 
-#     count1 = 1
-#     count2 = 1
-#     count3 = 1
-#     count4 = 1
+    count1 = 1
+    count2 = 1
+    count3 = 1
+    count4 = 1
 
-#     for x in idofseq:
-#         document = collection.find_one({"numid": x})
-#         retrieve_mp3(x, f"../public/correctsounds/{document['sound']}{count1}.mp3")
-#         count1 += 1
+    for x in idofseq:
+        document = collection.find_one({"numid": x})
+        retrieve_mp3(x, f"../public/correctsounds/correct{count1}.mp3")
+        count1 += 1
        
 
-#     for x in wrongidseq1:
-#         document = collection.find_one({"numid": x})
-#         retrieve_mp3(x, f"../public/incorrectsounds1/{document['sound']}{count2}.mp3")
-#         count2 += 1
+    for x in wrongidseq1:
+        document = collection.find_one({"numid": x})
+        retrieve_mp3(x, f"../public/incorrectsounds1/incorrect{count2}.mp3")
+        count2 += 1
         
-#     for x in wrongidseq2:
-#         document = collection.find_one({"numid": x})
-#         retrieve_mp3(x, f"../public/incorrectsounds2/{document['sound']}{count3}.mp3")
-#         count3 += 1
+    for x in wrongidseq2:
+        document = collection.find_one({"numid": x})
+        retrieve_mp3(x, f"../public/incorrectsounds2/incorrect{count3}.mp3")
+        count3 += 1
         
-#     for x in wrongidseq3:
-#         document = collection.find_one({"numid": x})
-#         retrieve_mp3(x, f"../public/incorrectsounds3/{document['sound']}{count4}.mp3")
-#         count4 += 1
+    for x in wrongidseq3:
+        document = collection.find_one({"numid": x})
+        retrieve_mp3(x, f"../public/incorrectsounds3/incorrect{count4}.mp3")
+        count4 += 1
         
         
-# @app.route("/submit/<usrans>")
-# def submit(usrans):
-#     if usrans == session.get('idofseq', 'no value set'):
+@app.route("/submit/<usrans>")
+def submit(usrans):
+    if usrans == session.get('idofseq', 'no value set'):
 
 
 
