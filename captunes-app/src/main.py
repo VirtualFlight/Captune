@@ -3,7 +3,7 @@ import random
 from pydub import AudioSegment
 from pydub.playback import play
 import io
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 import json
 
 
@@ -76,40 +76,44 @@ for x in range(lengthofsequence-1):
     wrongidseq2.append(random.randint(1,amountofdata))
     wrongidseq3.append(random.randint(1,amountofdata))
 
+count1 = 0
+count2 = 0
+count3 = 0
+count4 = 0
+
 for x in idofseq:
     document = collection.find_one({"numid": x})
-    if document:
-        retrieve_mp3(x, f"../public/correctsounds/{document['sound']}{x}.mp3")
-    else:
-        print(f"Correct sound not found for numid: {x}")
+        retrieve_mp3(x, f"../public/correctsounds/correct{count1}.mp3")
+        count1 += 1
 
 for x in wrongidseq1:
     document = collection.find_one({"numid": x})
-    if document:
-        retrieve_mp3(x, f"../public/incorrectsounds1/{document['sound']}{x}.mp3")
-    else:
-        print(f"Incorrect sound 1 not found for numid: {x}")
-
+    retrieve_mp3(x, f"../public/incorrectsounds1/incorrect{count2}.mp3")
+    count2 += 1 
+        
+        
 for x in wrongidseq2:
     document = collection.find_one({"numid": x})
-    if document:
-        retrieve_mp3(x, f"../public/incorrectsounds2/{document['sound']}{x}.mp3")
-    else:
-        print(f"Incorrect sound 2 not found for numid: {x}")
-
+    retrieve_mp3(x, f"../public/incorrectsounds2/incorrect{count3}.mp3")
+    count3 += 1
+        
 for x in wrongidseq3:
     document = collection.find_one({"numid": x})
-    if document:
-        retrieve_mp3(x, f"../public/incorrectsounds3/{document['sound']}{x}.mp3")
-    else:
-        print(f"Incorrect sound 3 not found for numid: {x}")
-
-print(f"The correct output is {idofseq}")
-print(f"The wrong 1 output is {wrongidseq1}")
-print(f"The wrong 2 output is {wrongidseq2}")
-print(f"The incorrect 3 output is {wrongidseq3}")
+    retrieve_mp3(x, f"../public/incorrectsounds3/incorrect{count4}.mp3")
+    count4 += 1
+        
+        
+@app.route("/submit/<usrans>")
+def submit(usrans):
+    if usrans == session.get('idofseq', 'no value set'):
 
 
+
+
+
+
+# if __name__ == "__main__":
+#     app.run(debug=True)
 
 
 
