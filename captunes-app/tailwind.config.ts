@@ -1,3 +1,4 @@
+// import { Itim } from "next/font/google";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -12,6 +13,10 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily:{
+        sans: ['var(--font-itim)']
+        // itim: ['var(--font-itim)'],
+      }
     },
   },
   plugins: [],
