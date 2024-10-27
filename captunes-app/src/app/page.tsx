@@ -8,8 +8,24 @@ const itim = Itim({
 })
 function page() {
   return (
-    <div className='flex items-center justify-center w-full h-screen bg-[#534B52]'>
-      <div className='flex flex-col items-center justify-between bg-[#2D232E] h-2/3 w-1/4 px-10 py-10  h-200 rounded-lg space-y-4 '>
+        
+    <div className='flex flex-col justify-between items-center justify-center w-full h-screen bg-[#584c54]'>
+      {/* Top Navagation Bar */}
+      <div className = 'flex flex-row bg-[#7A6A72] justify-between w-full h-1/5'>
+        {/* Logo */}
+        <div>
+          <Image
+          className = ''
+          alt = 'Logo'
+          src = '/Screen_Shot_2024-10-26_at_8.27.53_PM-removebg-preview.png'
+          width = {400}
+          height = {400}
+          />
+        </div>
+      </div>
+
+      {/* Captcha */}
+      <div className='flex-col items-center justify-between bg-white h-2/3 w-1/4 px-10 py-10 border-2 border-red-500 h-200 rounded-lg space-y-4'>
         {/* Sound */}
         <div className='flex bg-[#E0DDCF] border-2 w-full h-1/5 rounded-lg px-10 py-7 gap-10'>
           {/* Playbutton */}
@@ -23,12 +39,12 @@ function page() {
             />
           {/* </div> */}
           {/* Text */}
-          <div className='flex flex-col items-center w-full'>
+          <div className='flex flex-col items-center w-full overflow-hidden'>
             <div className={`${itim.className} text-[#2D232E] font-sans`} >
-              <div className='text-lg'>
+              <div className='text-base'>
                 Match the sound
               </div>
-              <div className='text-sm'>
+              <div className='text-xm'>
                 Click the square to listen and select
               </div>
             </div>
@@ -89,10 +105,10 @@ function page() {
       </div>  
         
      
-      
+    
     </div>
     
-
+    
   )
 }
 
