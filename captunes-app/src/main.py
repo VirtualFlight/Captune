@@ -32,6 +32,7 @@ def store_mp3(file_path, numid):
 
     result = collection.insert_one(document)
 
+
 # store_mp3("sounds/guitar.mp3", 1)
 # store_mp3("sounds/harp.mp3", 2)
 # store_mp3("sounds/piano.mp3", 3)
@@ -53,14 +54,14 @@ lengthofsequence = random.randint(lowerrangeseq,upperrangeseq)
 
 amountofdata = collection.count_documents({})
 
-# for collection in database.list_collection_names():
-#     collection = database["sounds"]
-#     collection.delete_many({})
+# # for collection in database.list_collection_names():
+# #     collection = database["sounds"]
+# #     collection.delete_many({})
 
 
 # all_documents_list = list(collection.find())
 
-# # Write to a JSON file
+# Write to a JSON file
 # with open('output.json', 'w') as outfile:
 #     json.dump(all_documents_list, outfile, default=str) 
 
@@ -109,20 +110,7 @@ print(f"The wrong 2 output is {wrongidseq2}")
 print(f"The incorrect 3 output is {wrongidseq3}")
 
 
-# for x in idofseq:
-#     retrieve_mp3(collection.find_one({"numid":x}),f"correctsounds/{collection.find_one({'numid':x})['sound']}{x}.mp3")
 
-# for x in wrongidseq1:
-#     retrieve_mp3(collection.find_one({"numid":x}),f"incorrectsounds1/{collection.find_one({'numid':x})['sound']}{x}.mp3")
-
-# for x in wrongidseq2:
-#     retrieve_mp3(collection.find_one({"numid":x}),f"incorrectsounds2/{collection.find_one({'numid':x})['sound']}{x}.mp3")
-
-# for x in wrongidseq3:
-#     retrieve_mp3(collection.find_one({"numid":x}),f"incorrectsounds3/{collection.find_one({'numid':x})['sound']}{x}.mp3")
-
-# captcha = 10
-# done = False
 
 
 

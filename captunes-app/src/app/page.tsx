@@ -12,18 +12,70 @@ const itim = Itim({
   subsets:['latin'],
 })
 
+function Random() {
+  let count = 0;
+  let randlist: number[] = [];
+
+  while (count < 4) {
+    let randomnum = Math.floor(Math.random() * 4);
+    if (!randlist.includes(randomnum)) {
+      count += 1;
+      randlist.push(randomnum);
+    }
+  }
+
+  return randlist;
+}
+
+function Songs(list){
+  
+}
+
 function Page() {
   let [isOpen, setIsOpen] = useState(false)
   // const [guitarSound] = useSound('sounds/trumpet.mp3')
+  const [randomlist, setRandomlist] = useState<number[]>([]);
+  const [sound1, setSound1] = useState(0);
+  const [sound2, setSound2] = useState(0);
+  const [sound3, setSound3] = useState(0);
+  const [sound4, setSound4] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [playing1, setPlaying1] = useState(false);
   const [playing2, setPlaying2] = useState(false);
   const [playing3, setPlaying3] = useState(false);
+
+
+  useEffect(() => {
+    setRandomlist(Random());
+    setSound1();
+    setSound2();
+    setSound3();
+    setSound4();
+  }, []);
+
+  
+  console.log(randomlist)
+
+
+
+  // for (let i = 0; i < 4; i++) {
+  //   let random = Math.floor(Math.random()*4)
+  //   if (random in isThere){
+  //       const [sound{i}] = useSound('')
+  //   }
+
+  // } 
+  // Math.random()
+  const [correctsound] = useSound('correctsounds/')
   
   
-  const [guitarSound, { stop }] = useSound('sounds/trumpet.mp3', {
-    onend: () => setPlaying(false), // Set playing to false when the sound ends
-  });
+    const [sound1] = useSound('incorrectsounds1/trumpet.mp3');
+    const [sound2] = useSound('incorrectsounds2/guitar.mp3');
+    const [sound3] = useSound('incorrectsounds3/harp.mp3');
+    const [sound4] = useSound('incorrectsounds4/trumpet.mp3');
+
+  
+  
 
   let currentSelection = -1 
 
@@ -71,7 +123,7 @@ function Page() {
     setPlaying2(false)
     setPlaying3(false)
     currentSelection = 0
-    guitarSound();
+    sound();
   }
   
   const handlePlay1 = () => {
@@ -80,7 +132,7 @@ function Page() {
     setPlaying3(false)
     setPlaying(false)
     currentSelection = 1
-    guitarSound();
+    sound1();
   }
 
   const handlePlay2 = () => {
@@ -89,7 +141,7 @@ function Page() {
     setPlaying(false)
     setPlaying1(false)
     currentSelection = 2
-    guitarSound();
+    sound2();
   }
 
   const handlePlay3 = () => {
@@ -98,7 +150,7 @@ function Page() {
     setPlaying1(false)
     setPlaying2(false)
     currentSelection = 3
-    guitarSound();
+    sound3();
   }
 
   function handleSkip(){
